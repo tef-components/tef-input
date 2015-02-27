@@ -1,0 +1,75 @@
+<!doctype html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<html>
+<head>
+<script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
+<link rel="import" href="tef-inputs.dev.html">
+<style>
+body {
+font-family: Helvetica, Arial;
+font-size: 14px;
+}
+header {
+display: block;
+overflow: hidden;
+}
+header * {
+display: inline-block;
+vertical-align: middle;
+}
+header span {
+margin-left: 30px;
+font-size: 12px;
+}
+style {
+display: block !important;
+white-space: pre;
+margin-left: -65px;
+line-height: 25px;
+}
+</style>
+</head>
+<body>
+<h1>TEF inputs - Web Components Version</h1>
+<h2>Input type text</h2>
+<div>
+<tef-input placeholder="input"></tef-input>
+</div>
+<code>
+<style>
+        <tef-input placeholder="input"></tef-input>
+</style>
+</code>
+<h2>Label + input</h2>
+<div>
+<tef-input label= "Label" value="input"></tef-input>
+</div>
+<code>
+<style>
+        <tef-input label= "Label" value="input"></tef-input>
+</style>
+</code>
+<h2>Form container</h2>
+<div>
+<tef-input label= "Label" value="input" tefformrow></tef-input>
+<tef-input multiline label= "Label" value="input" tefformrow></tef-input>
+</div>
+<code>
+<style>
+        <tef-input label= "Label" value="input" tefformrow></tef-input>
+        <tef-input multiline label= "Label" value="input" tefformrow></tef-input>
+</style>
+</code>
+<h2>Sizes</h2>
+<div>
+<tef-input value="Small input" small tefformrow></tef-input>
+<tef-input value="Large input" large tefformrow></tef-input>
+</div>
+<code>
+<style>
+        <tef-input value="Small input" small></tef-input>
+        <tef-input value="Large input" large></tef-input>
+</style>
+</code>
+</body>
+</html>

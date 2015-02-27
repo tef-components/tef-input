@@ -1,0 +1,83 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="tef-button" on-click="{{onClick}}" attributes ="label size type toggle active disabled">
+    <template>
+    	<tef-core id="core" ></tef-core>  	
+	    <link rel="stylesheet" href="bower_components/buttons/css/buttons.min.css">
+	    <button id="button" class ="tef-button {{size}} {{type}}">
+		    {{label}}
+		</button>
+	</template>
+	<script>
+
+		Polymer({			
+			label: "Button",
+			size: "",
+			type: "",			
+			publish: {
+				toggle:{
+					value: false,
+					reflect: true
+				},
+				active:{
+					value: false,
+					reflect: true
+				},
+				disabled:{
+					value:false,
+					reflect: true
+				}
+			},
+
+			activeChanged: function(oldValue, newValue){
+				var button = this.$.button;
+				if (newValue){
+					this.$.core.addClass(button, "active");					
+					this.fire("activated");
+				}else{
+					this.$.core.removeClass(button, "active")					
+					this.fire("deactivated");
+				}
+			},
+			
+			disabledChanged: function(oldValue, newValue) {
+				var button = this.$.button;
+				if (newValue) this.$.core.addClass(button, "disabled");
+				else this.$.core.removeClass(button, "disabled");
+			},
+
+			onClick: function(){
+				if (!this.disabled) {
+					if (this.toggle){
+						var button = this.$.button;
+						this.active = !this.active;
+					}else{
+						this.fire("clicked");//Could be pressed						
+					}
+				}
+			},
+			ready: function(){
+				var href;
+				if (this.$.core.isReady){//If core has already loaded and has the correct brand
+					href = "bower_components/buttons/css/buttons." + this.$.core.brand +".css";
+					this.addDinamicCss(href);
+				}
+				else{
+					this.$.core.addEventListener("ready", function(){//If not, we register it as a callback to the ready event
+						href = "bower_components/buttons/css/buttons." + this.$.core.brand +".css";
+						this.addDinamicCss(href);
+					}.bind(this));
+				}
+				
+			},
+			addDinamicCss: function(href){
+				var link = document.createElement('link');
+				link.type = 'text/css';
+				link.rel = 'stylesheet';
+				link.href = href;
+				this.shadowRoot.appendChild(link);
+				this.element.convertSheetsToStyles(this.shadowRoot);				
+			}	
+		});
+	</script>	
+</polymer-element>
