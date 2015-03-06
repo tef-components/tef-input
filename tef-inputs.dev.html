@@ -1,18 +1,31 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="tef-button.dev.html">
-
-<polymer-element name="tef-input" attributes="placeholder multiline value label tefformrow small large">
+<link rel="stylesheet" href="bower_components/icons/icons.css">
+<polymer-element name="tef-input" attributes="placeholder multiline icon value label tefformrow small large validation">
     <template>
         <link rel="stylesheet" href="bower_components/inputs/css/inputs.min.css">
+        <link rel="stylesheet" href="bower_components/icons/icons.css">
         <label>{{label}}</label>
-        <template if={{!multiline}}>
-            <input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+        <template if="{{!multiline && !icon && !validation}}">
+                <input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
         </template>
-        <template if={{multiline}}>
+        <template if="{{multiline}}">
             <textarea id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
-                <!--<content></content>-->
             </textarea>
-            <!--<input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>-->
+        </template>
+        <template if="{{icon}}">
+            <div class="tef-input-icon {{tefformrow ? ' tef-form-row' : ''}} ">
+                <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+                <i data-icon={{icon}}></i>
+            </div>
+        </template>
+        <template if="{{validation!=false}}">
+             <div class="tef-form-row tef-{{validation}}"> 
+                 <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}} > 
+                 <div class="tef-message"> 
+                     </content><content>
+                 </div> 
+            </div>
         </template>
     </template>
 	<script>
@@ -20,6 +33,10 @@
             publish: {
                 multiline: {
                     value: false,
+                    reflect: true
+                },
+                icon: {
+                    value: "",
                     reflect: true
                 },
                 tefformrow: {
@@ -33,6 +50,13 @@
                 large: {
                     value: false,
                     reflect: true
+                },
+                validation: {
+                    value: "",
+                    reflect: true
+                },
+                ready: function(){
+                    if (!this.multiline && !this.icon && !this.validation) console.log("IT WORKS");
                 }
             }
         });				

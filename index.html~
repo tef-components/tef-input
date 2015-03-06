@@ -4,7 +4,6 @@
 <head>
 <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
 <link rel="import" href="tef-inputs.dev.html">
-<link rel="stylesheet" href="bower_components/icons/icons.css">    
 <style>
 body {
 font-family: Helvetica, Arial;
@@ -64,50 +63,12 @@ line-height: 25px;
 <h2>Sizes</h2>
 <div>
 <tef-input value="Small input" small tefformrow></tef-input>
-<tef-input value="Default input" tefformrow></tef-input>
 <tef-input value="Large input" large tefformrow></tef-input>
 </div>
 <code>
 <style>
         <tef-input value="Small input" small></tef-input>
-        <tef-input value="Default input" tefformrow></tef-input>
         <tef-input value="Large input" large></tef-input>
-</style>
-</code>
-<h2>Icons</h2>
-<div>
-<tef-input value="Small search" icon="search" small tefformrow></tef-input>
-<tef-input value="Search" icon="search" tefformrow></tef-input>
-<tef-input value="Large search" icon="search" large tefformrow></tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Small search" icon="search" small tefformrow></tef-input>
-        <tef-input value="Search" icon="search" tefformrow></tef-input>
-        <tef-input value="Large search" icon="search" large tefformrow></tef-input>
-</style>
-</code>
-<h2>Validations</h2>
-<div>
-<tef-input value="Input" tefformrow validation="positive">This field is valid</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="positive">This field is valid</tef-input>
-</style>
-    <div>
-<tef-input value="Input" tefformrow validation="warning">This field has a warning</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="warning">This field has a warning</tef-input>
-</style>
-<div>
-<tef-input value="Input" tefformrow validation="negative">This field is invalid</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="negative">This field is invalid</tef-input>
 </style>
 </code>
 </body>

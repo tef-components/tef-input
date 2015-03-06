@@ -1,0 +1,40 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="tef-button.dev.html">
+
+<polymer-element name="tef-input" attributes="placeholder multiline value label tefformrow small large">
+    <template>
+        <link rel="stylesheet" href="bower_components/inputs/css/inputs.min.css">
+        <label>{{label}}</label>
+        <template if={{!multiline}}>
+            <input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+        </template>
+        <template if={{multiline}}>
+            <textarea id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+                <!--<content></content>-->
+            </textarea>
+            <!--<input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>-->
+        </template>
+    </template>
+	<script>
+        Polymer({
+            publish: {
+                multiline: {
+                    value: false,
+                    reflect: true
+                },
+                tefformrow: {
+                    value: false,
+                    reflect: true
+                },
+                small: {
+                    value: false,
+                    reflect: true
+                },
+                large: {
+                    value: false,
+                    reflect: true
+                }
+            }
+        });				
+	</script>	
+</polymer-element>
