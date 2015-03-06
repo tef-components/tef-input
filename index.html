@@ -4,6 +4,7 @@
 <head>
 <script type="text/javascript" src="../webcomponentsjs/webcomponents.js"></script>
 <link rel="import" href="tef-inputs.html">
+<link rel="import" href="../tef-core/tef-core.html">
 <link rel="stylesheet" href="../icons/icons.css">    
 <style>
 body {
@@ -31,7 +32,17 @@ line-height: 25px;
 </style>
 </head>
 <body>
-<h1>TEF inputs - Web Components Version</h1>
+<header>
+<h1>TEF Inputs</h1>
+<span>Change theme</span>
+<select id="themeSelector">
+<option value="telefonica">Telefónica</option>
+<option value="movistar">Movistar</option>
+<option value="o2">O2</option>
+<option value="vivo">Vivo</option>
+</select>
+</header>    
+<tef-core brand="telefonica"></tef-core>
 <h2>Input type text</h2>
 <div>
 <tef-input placeholder="input"></tef-input>
@@ -110,5 +121,11 @@ line-height: 25px;
         <tef-input value="Input" tefformrow validation="negative">This field is invalid</tef-input>
 </style>
 </code>
+        <script>
+            var theme = document.getElementById('themeSelector');
+            theme.addEventListener('change', function() {
+                document.querySelector('tef-core').setAttribute('brand', theme.value);
+            });
+        </script>
 </body>
 </html>

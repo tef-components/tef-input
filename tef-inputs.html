@@ -1,8 +1,15 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+<link rel="import" href="../core-signals/core-signals.html">
+
 <link rel="stylesheet" href="../icons/icons.css">
 <polymer-element name="tef-input" attributes="placeholder multiline icon value label tefformrow small large validation">
     <template>
-        <link rel="stylesheet" href="../inputs/css/inputs.min.css">
+        <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
+        <template if="{{brand}}">
+            <core-ajax auto url="{{resolveCSSPath(brand)}}" response="{{resp}}"></core-ajax>
+            <style>{{resp}}</style>
+        </template>
         <link rel="stylesheet" href="../icons/icons.css">
         <label>{{label}}</label>
         <template if="{{!multiline && !icon && !validation}}">
@@ -29,6 +36,7 @@
     </template>
 	<script>
         Polymer({
+            brand : "",
             publish: {
                 multiline: {
                     value: false,
@@ -53,10 +61,15 @@
                 validation: {
                     value: "",
                     reflect: true
-                },
-                ready: function(){
-                    if (!this.multiline && !this.icon && !this.validation) console.log("IT WORKS");
                 }
+            },
+            newBrand: function(e, detail, sender) {
+                if (detail) {
+                    this.brand = detail;
+                }
+            },
+            resolveCSSPath: function(value) {
+                return this.resolvePath('../inputs/css/inputs.'+ this.brand + '.min.css');
             }
         });				
 	</script>	
