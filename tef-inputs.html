@@ -11,7 +11,9 @@
             <style>{{resp}}</style>
         </template>
         <link rel="stylesheet" href="../icons/icons.css">
-        <label>{{label}}</label>
+        <template if="{{label}}">
+            <label>{{label}}</label>
+        </template>
         <template if="{{!multiline && !icon && !validation}}">
                 <input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
         </template>
@@ -38,6 +40,10 @@
         Polymer({
             brand : "",
             publish: {
+                label: {
+                    value: "",
+                    reflect: true
+                },
                 multiline: {
                     value: false,
                     reflect: true
