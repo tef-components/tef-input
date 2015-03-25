@@ -18,8 +18,10 @@
     "bower_components"
   ],
   "dependencies": {
-    "inputs": "tef-components/inputs#^0.1.4", 
-    "tef-core": "tef-components/tef-core#^0.1.3"
+    "polymer": "Polymer/polymer#^0.5",
+    "inputs": "tef-components/inputs#^0.1.9",
+    "webcomponentsjs": "~0.5.5",
+    "core-style": "Polymer/core-style#~0.5.5"
   },
   "devDependencies": {
       "icons": "tef-components/icons"

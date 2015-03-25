@@ -1,44 +1,37 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../core-ajax/core-ajax.html">
-<link rel="import" href="../core-signals/core-signals.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-style/core-style.html">
+<link rel="import" href="tef_input_styles.html">
 
-<link rel="stylesheet" href="../icons/icons.css">
-<polymer-element name="tef-input" attributes="placeholder multiline icon value label tefformrow small large validation">
+<polymer-element name="tef-input" attributes="placeholder multiline icon value label tefrow small large block validation">
     <template>
-        <core-signals on-core-signal-new-brand="{{newBrand}}"></core-signals>
-        <template if="{{brand}}">
-            <core-ajax auto url="{{resolveCSSPath(brand)}}" response="{{resp}}"></core-ajax>
-            <style>{{resp}}</style>
-        </template>
-        <link rel="stylesheet" href="../icons/icons.css">
+        <core-style ref="tef-input"></core-style>
         <template if="{{label}}">
             <label>{{label}}</label>
         </template>
         <template if="{{!multiline && !icon && !validation}}">
-                <input id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+                <input id="input" class="tef-input {{tefrow ? ' tef-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}}>
         </template>
         <template if="{{multiline}}">
-            <textarea id="input" class="tef-input {{tefformrow ? ' tef-form-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
+            <textarea id="input" class="tef-input {{tefrow ? ' tef-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}}>
             </textarea>
         </template>
         <template if="{{icon}}">
-            <div class="tef-input-icon {{tefformrow ? ' tef-form-row' : ''}} ">
-                <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}}>
-                <i data-icon={{icon}}></i>
+            <div class="tef-row">
+                <input class="tef-input icon {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" type="text" placeholder={{placeholder}} value={{value}}>
+                <content select="i"></content>
             </div>
         </template>
-        <template if="{{validation!=false}}">
-             <div class="tef-form-row tef-{{validation}}"> 
-                 <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}}" placeholder={{placeholder}} value={{value}} > 
+        <template if="{{validation}}">
+             <div class="tef-row tef-{{validation}}"> 
+                 <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}} > 
                  <div class="tef-message"> 
-                     </content><content>
+                     <content></content>
                  </div> 
             </div>
         </template>
     </template>
 	<script>
         Polymer({
-            brand : "",
             publish: {
                 label: {
                     value: "",
@@ -49,10 +42,10 @@
                     reflect: true
                 },
                 icon: {
-                    value: "",
+                    value: false,
                     reflect: true
                 },
-                tefformrow: {
+                tefrow: {
                     value: false,
                     reflect: true
                 },
@@ -64,18 +57,14 @@
                     value: false,
                     reflect: true
                 },
+                block: {
+                    value: false,
+                    reflect: true
+                },
                 validation: {
                     value: "",
                     reflect: true
                 }
-            },
-            newBrand: function(e, detail, sender) {
-                if (detail) {
-                    this.brand = detail;
-                }
-            },
-            resolveCSSPath: function(value) {
-                return this.resolvePath('../inputs/css/inputs.'+ this.brand + '.min.css');
             }
         });				
 	</script>	

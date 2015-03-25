@@ -1,131 +1,199 @@
 <!doctype html>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
-<head>
-<script type="text/javascript" src="../webcomponentsjs/webcomponents.js"></script>
-<link rel="import" href="tef-inputs.html">
-<link rel="import" href="../tef-core/tef-core.html">
-<link rel="stylesheet" href="../icons/icons.css">    
-<style>
-body {
-font-family: Helvetica, Arial;
-font-size: 14px;
-}
-header {
-display: block;
-overflow: hidden;
-}
-header * {
-display: inline-block;
-vertical-align: middle;
-}
-header span {
-margin-left: 30px;
-font-size: 12px;
-}
-style {
-display: block !important;
-white-space: pre;
-margin-left: -65px;
-line-height: 25px;
-}
-</style>
-</head>
-<body>
-<header>
-<h1>TEF Inputs</h1>
-<span>Change theme</span>
-<select id="themeSelector">
-<option value="telefonica">Telefónica</option>
-<option value="movistar">Movistar</option>
-<option value="o2">O2</option>
-<option value="vivo">Vivo</option>
-</select>
-</header>    
-<tef-core brand="telefonica"></tef-core>
-<h2>Input type text</h2>
-<div>
-<tef-input placeholder="input"></tef-input>
-</div>
-<code>
-<style>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>TEF input demo</title>
+
+    <!-- Web Components polyfill -->
+    <script>
+      if ('registerElement' in document
+        && 'createShadowRoot' in HTMLElement.prototype
+        && 'import' in document.createElement('link')
+        && 'content' in document.createElement('template')) {
+      } else {
+        document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+      }
+    </script>
+
+    <link rel="import" href="tef-inputs.html">
+    <link id="themeComps" rel="stylesheet" href="../theme_telefonica/css/components.telefonica.css">
+    <script id="themeVars" src="../theme_telefonica/theme.telefonica.js"></script>
+
+    <style>
+      header[data-columns] { padding-top: 30px; }
+      h1 { margin-top: 0; }
+      header > div { padding-top: 2px; }
+      code {
+        display: block;
+        overflow: hidden;
+      }
+      style {
+        display: block;
+        white-space: pre;
+        color: #0086B3;
+        border: 1px solid #cfcece;
+        background: #f2f2f2;
+        margin: 20px 0;
+        line-height: 25px;
+        overflow-y: auto;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body unresolved>
+    <div class="tef-wrapper">
+      <header data-columns="2" data-columns-xs="1">
+        <h1>tef-input</h1>
+        <div>
+          <label>Change theme</label>
+          <div class="tef-dropdown" data-icon="angle_down">
+            <select id="themeSelector">
+              <option value="telefonica">Telefónica</option>
+              <option value="movistar">Movistar</option>
+              <option value="o2">O2</option>
+              <option value="vivo">Vivo</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <tef-core brand="telefonica"></tef-core>
+
+      <h2>Input type text</h2>
+        <div>
+            <tef-input placeholder="Enter user name"></tef-input>
+        </div>
+        <code>
+        <style>
         <tef-input placeholder="input"></tef-input>
-</style>
-</code>
-<h2>Label + input</h2>
-<div>
-<tef-input label= "Label" value="input"></tef-input>
-</div>
-<code>
-<style>
+        </style>
+        </code>
+        <h2>Label + input</h2>
+        <p>Default behaviour is inline.</p>
+        <div>
+            <tef-input label= "Label" value="input"></tef-input>
+        </div>
+        <code>
+        <style>
         <tef-input label= "Label" value="input"></tef-input>
-</style>
-</code>
-<h2>Form container</h2>
-<div>
-<tef-input label= "Label" value="input" tefformrow></tef-input>
-<tef-input multiline label= "Label" value="input" tefformrow></tef-input>
-</div>
-<code>
-<style>
-        <tef-input label= "Label" value="input" tefformrow></tef-input>
-        <tef-input multiline label= "Label" value="input" tefformrow></tef-input>
-</style>
-</code>
-<h2>Sizes</h2>
-<div>
-<tef-input value="Small input" small tefformrow></tef-input>
-<tef-input value="Default input" tefformrow></tef-input>
-<tef-input value="Large input" large tefformrow></tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Small input" small></tef-input>
-        <tef-input value="Default input" tefformrow></tef-input>
-        <tef-input value="Large input" large></tef-input>
-</style>
-</code>
-<h2>Icons</h2>
-<div>
-<tef-input value="Small search" icon="search" small tefformrow></tef-input>
-<tef-input value="Search" icon="search" tefformrow></tef-input>
-<tef-input value="Large search" icon="search" large tefformrow></tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Small search" icon="search" small tefformrow></tef-input>
-        <tef-input value="Search" icon="search" tefformrow></tef-input>
-        <tef-input value="Large search" icon="search" large tefformrow></tef-input>
-</style>
-</code>
-<h2>Validations</h2>
-<div>
-<tef-input value="Input" tefformrow validation="positive">This field is valid</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="positive">This field is valid</tef-input>
-</style>
-    <div>
-<tef-input value="Input" tefformrow validation="warning">This field has a warning</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="warning">This field has a warning</tef-input>
-</style>
-<div>
-<tef-input value="Input" tefformrow validation="negative">This field is invalid</tef-input>
-</div>
-<code>
-<style>
-        <tef-input value="Input" tefformrow validation="negative">This field is invalid</tef-input>
-</style>
-</code>
-        <script>
-            var theme = document.getElementById('themeSelector');
-            theme.addEventListener('change', function() {
-                document.querySelector('tef-core').setAttribute('brand', theme.value);
-            });
-        </script>
-</body>
+        </style>
+        </code>
+        <h2>Form container</h2>
+        <p>Use attribute tefrow to diplay separate blocks of information.</p>
+        <p>Use attribute multiline to transform an input into a textarea.</p>
+        <div>
+            <tef-input label= "Label" value="input" tefrow></tef-input>
+            <tef-input multiline label= "Label" value="multiline" tefrow></tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input label= "Label" value="input" tefrow></tef-input>
+        <tef-input multiline label= "Label" value="input" tefrow></tef-input>
+        </style>
+        </code>
+        <h2>Sizes</h2>
+        <div>
+        <tef-input value="Small input" small tefrow></tef-input>
+        <tef-input value="Small textarea" small multiline tefrow></tef-input>
+        <tef-input value="Large input" large tefrow></tef-input>
+        <tef-input value="Large textarea" large multiline tefrow></tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input value="Small input" small tefrow></tef-input>
+        <tef-input value="Small textarea" small multiline tefrow></tef-input>
+        <tef-input value="Large input" large tefrow></tef-input>
+        <tef-input value="Large textarea" large multiline tefrow></tef-input>
+        </style>
+        </code>
+        <h2>Icons</h2>
+        <div>
+            <tef-input value="Small search" icon small tefrow>
+                <i data-icon="search"></i>
+            </tef-input>
+            <tef-input value="Search" icon tefrow>
+                <i data-icon="search"></i>
+            </tef-input>
+            <tef-input value="Large search" icon large tefrow>
+                <i data-icon="search"></i>
+            </tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input value="Small search" icon small tefrow>
+            <i data-icon="search"></i>
+        </tef-input>
+        <tef-input value="Search" icon tefrow>
+            <i data-icon="search"></i>
+        </tef-input>
+        <tef-input value="Large search" icon large tefrow>
+            <i data-icon="search"></i>
+        </tef-input>
+        </style>
+        </code>
+        <h2>Block</h2>
+        <p>Fits the available space.</p>
+        <div>
+        <tef-input value="Block input" block tefrow></tef-input>
+        <tef-input value="Block search" icon block tefrow>
+            <i data-icon="search"></i>
+        </tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input value="Block input" block tefrow></tef-input>
+        <tef-input value="Block search" icon block tefrow>
+            <i data-icon="search"></i>
+        </tef-input>
+        </style>
+        </code>
+        <h2>Validations</h2>
+            <div>
+                <tef-input value="Input" tefrow validation="ok">This field is valid</tef-input>
+            </div>
+        <code>
+        <style>
+        <tef-input value="text" tefrow validation="ok">This field is valid</tef-input>
+        </style>
+            <div>
+        <tef-input value="text" tefrow validation="warning">This field has a warning</tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input value="text" tefrow validation="warning">This field has a warning</tef-input>
+        </style>
+        <div>
+        <tef-input value="text" tefrow validation="negative">This field is invalid</tef-input>
+        </div>
+        <code>
+        <style>
+        <tef-input value="text" tefrow validation="negative">This field is invalid</tef-input>
+        </style>
+        </code>
+    <script>
+      var theme = document.getElementById('themeSelector'),
+
+          linkComps = document.getElementById('themeComps');
+
+      theme.addEventListener('change', function() {
+        document.head.removeChild(document.getElementById("themeVars"));
+        var linkVars = document.createElement('script');
+        linkVars.id = "themeVars";
+
+        linkVars.src = '../theme_'
+          + theme.value + '/theme.'
+          + theme.value + '.js';
+
+        document.head.appendChild(linkVars);
+
+        linkComps.href = '../theme_'
+          + theme.value + '/css/components.'
+          + theme.value + '.css';
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,167 @@
+<core-style id="tef-input">
+  :host label {
+    color: {{g.grey5}};
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 28px;
+    font-weight: bold;
+    padding-right: 7px;
+  }
+  :host .tef-input {
+    display: inline-block;
+    vertical-align: middle;
+    background: white;
+    color: black;
+    font-size: 15px;
+    padding: 7px 9px;
+    border: 1px solid {{g.grey2}};
+    border-radius: 4px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  :host .tef-input.small {
+    font-size: 11px;
+  }
+  :host .tef-input.large {
+    font-size: 24px;
+  }
+  :host .tef-input:hover,
+  :host .tef-input:focus,
+  :host .tef-input:active {
+    padding: 6px 8px;
+    border: 2px solid {{g.significant}};
+    outline: none;
+  }
+  :host .tef-input.icon {
+    padding-right: 40px;
+  }
+  :host .tef-input.icon:hover,
+  :host .tef-input.icon:focus,
+  :host .tef-input.icon:active {
+    padding-right: 39px;
+  }
+  :host .tef-input.icon + [data-icon] {
+    position: relative;
+    top: 3px;
+    left: -37px;
+    width: 40px;
+  }
+  :host .tef-input.icon + [data-icon]:before {
+    font-size: 24px;
+  }
+  :host .tef-input.icon.small + [data-icon] {
+    top: 2px;
+    left: -32px;
+  }
+  :host .tef-input.icon.small + [data-icon]:before {
+    font-size: 18px;
+  }
+  :host .tef-input.icon.large + [data-icon] {
+    top: 6px;
+    left: -40px;
+  }
+  :host .tef-input.icon.large + [data-icon]:before {
+    font-size: 30px;
+  }
+  :host .tef-input.block {
+    width: 100%;
+  }
+  :host .tef-input.block + [data-icon],
+  :host .tef-input.block.small + [data-icon],
+  :host .tef-input.block.large + [data-icon] {
+    position: absolute;
+    right: 0;
+    left: auto;
+  }
+  :host .tef-message {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  :host .tef-ok input {
+    padding: 6px 8px;
+    border: 2px solid {{g.positive}};
+  }
+  :host .tef-ok .tef-message {
+    background-color: {{g.positive}};
+  }
+  :host .tef-warning input,
+  :host .tef-negative input {
+    padding: 6px 8px;
+    border: 2px solid {{g.negative}};
+  }
+  :host .tef-warning .tef-message,
+  :host .tef-negative .tef-message {
+    background-color: {{g.negative}};
+  }
+  :host .tef-input.small + .tef-message {
+    font-size: 11px;
+  }
+  :host .tef-input.large + .tef-message {
+    font-size: 24px;
+  }
+  :host .tef-input.block + .tef-message {
+    margin-top: 5px;
+    display: block;
+  }
+  :host .tef-row,
+  :host .tef-group {
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  :host .tef-row label,
+  :host .tef-group label {
+    display: block;
+  }
+  :host .tef-row > label + *,
+  :host .tef-group > label + *,
+  :host .tef-row > .tef-message,
+  :host .tef-group > .tef-message {
+    margin-left: 0;
+  }
+  :host .tef-group > *,
+  :host .tef-group ::content > * {
+    border-radius: 0 !important;
+  }
+  :host .tef-group > *:first-child,
+  :host .tef-group ::content > *:first-child,
+  :host .tef-group > *:first-child > button,
+  :host .tef-group ::content > *:first-child > button,
+  :host .tef-group > *:first-child::shadow .tef-button,
+  :host .tef-group ::content > *:first-child::shadow .tef-button {
+    border-radius: 4px 0 0 4px !important;
+  }
+  :host .tef-group > *:last-child,
+  :host .tef-group ::content > *:last-child,
+  :host .tef-group > *:last-child > button,
+  :host .tef-group ::content > *:last-child > button,
+  :host .tef-group > *:last-child::shadow .tef-button,
+  :host .tef-group ::content > *:last-child::shadow .tef-button {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  :host .tef-group > *:first-child:last-child,
+  :host .tef-group ::content > *:first-child:last-child {
+    border-radius: 4px !important;
+  }
+  :host .tef-group > * ~ *,
+  :host .tef-group ::content > * ~ * {
+    margin: 0 0 0 -5px !important;
+  }
+  :host .tef-group .tef-button + .tef-button,
+  :host .tef-group ::content tef-button + tef-button::shadow .tef-button {
+    border-left-color: white;
+  }
+  :host [disabled],
+  :host .disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+</core-style>
