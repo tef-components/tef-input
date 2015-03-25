@@ -43,27 +43,33 @@
   :host .tef-input.icon:active {
     padding-right: 39px;
   }
-  :host .tef-input.icon + [data-icon] {
+  :host .tef-input.icon + [data-icon],
+    :host .tef-input.icon + ::content [data-icon]{
     position: relative;
     top: 3px;
     left: -37px;
     width: 40px;
   }
-  :host .tef-input.icon + [data-icon]:before {
+  :host .tef-input.icon + [data-icon]:before,
+    :host .tef-input.icon + ::content [data-icon]:before{
     font-size: 24px;
   }
-  :host .tef-input.icon.small + [data-icon] {
+  :host .tef-input.icon.small + [data-icon],
+      :host .tef-input.icon.small + ::content [data-icon] {
     top: 2px;
     left: -32px;
   }
-  :host .tef-input.icon.small + [data-icon]:before {
+  :host .tef-input.icon.small + [data-icon]:before,
+    :host .tef-input.icon.small + ::content [data-icon]:before{
     font-size: 18px;
   }
-  :host .tef-input.icon.large + [data-icon] {
+  :host .tef-input.icon.large + [data-icon],
+    :host .tef-input.icon.large + ::content [data-icon] {
     top: 6px;
     left: -40px;
   }
-  :host .tef-input.icon.large + [data-icon]:before {
+  :host .tef-input.icon.large + [data-icon]:before,
+    :host .tef-input.icon.large + ::content [data-icon]:before{
     font-size: 30px;
   }
   :host .tef-input.block {
@@ -71,7 +77,10 @@
   }
   :host .tef-input.block + [data-icon],
   :host .tef-input.block.small + [data-icon],
-  :host .tef-input.block.large + [data-icon] {
+  :host .tef-input.block.large + [data-icon],
+  :host .tef-input.block + ::content [data-icon],
+  :host .tef-input.block.small + ::content [data-icon],
+  :host .tef-input.block.large + ::content [data-icon]{
     position: absolute;
     right: 0;
     left: auto;
