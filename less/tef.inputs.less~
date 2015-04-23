@@ -69,7 +69,5 @@
   @grey4:                       e('{{g.grey4}}');
   @grey5:                       e('{{g.grey5}}');
   @grey6:                       e('{{g.grey6}}');
-	
-  @warning: 			e('{{g.warning}}');
 }
 

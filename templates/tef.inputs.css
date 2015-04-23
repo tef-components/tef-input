@@ -13,9 +13,10 @@
   background: white;
   color: black;
   font-size: 15px;
-  padding: 7px 9px;
+  line-height: 18px;
+  padding: 8px 9px;
   border: 1px solid {{g.grey2}};
-  border-radius: 4px;
+  border-radius: {{g.radius}};
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
@@ -23,16 +24,30 @@
 }
 :host .tef-input.small {
   font-size: 11px;
+  line-height: 13px;
+  padding: 6px 9px;
 }
 :host .tef-input.large {
   font-size: 24px;
+  line-height: 29px;
+  padding: 7px 14px;
 }
 :host .tef-input:hover,
 :host .tef-input:focus,
 :host .tef-input:active {
-  padding: 6px 8px;
+  padding: 7px 8px;
   border: 2px solid {{g.significant}};
   outline: none;
+}
+:host .tef-input:hover.small,
+:host .tef-input:focus.small,
+:host .tef-input:active.small {
+  padding: 5px 8px;
+}
+:host .tef-input:hover.large,
+:host .tef-input:focus.large,
+:host .tef-input:active.large {
+  padding: 6px 13px;
 }
 :host .tef-input.icon {
   padding-right: 40px;
@@ -42,68 +57,97 @@
 :host .tef-input.icon:active {
   padding-right: 39px;
 }
-:host .tef-input.icon + [data-icon] {
+:host .tef-input.icon + [icon] {
   position: relative;
   top: 3px;
   left: -37px;
   width: 40px;
+  margin-right: -27px;
 }
-:host .tef-input.icon + [data-icon]:before {
+:host .tef-input.icon + [icon]:before {
   font-size: 24px;
 }
-:host .tef-input.icon.small + [data-icon] {
+:host .tef-input.icon.small + [icon] {
   top: 2px;
   left: -32px;
+  margin-right: -22px;
 }
-:host .tef-input.icon.small + [data-icon]:before {
+:host .tef-input.icon.small + [icon]:before {
   font-size: 18px;
 }
-:host .tef-input.icon.large + [data-icon] {
+:host .tef-input.icon.large + [icon] {
   top: 6px;
   left: -40px;
+  margin-right: -30px;
 }
-:host .tef-input.icon.large + [data-icon]:before {
+:host .tef-input.icon.large + [icon]:before {
   font-size: 30px;
 }
 :host .tef-input.block {
   width: 100%;
 }
-:host .tef-input.block + [data-icon],
-:host .tef-input.block.small + [data-icon],
-:host .tef-input.block.large + [data-icon] {
+:host .tef-input.block + [icon],
+:host .tef-input.block.small + [icon],
+:host .tef-input.block.large + [icon] {
   position: absolute;
   right: 0;
   left: auto;
+  margin-right: 0;
 }
 :host .tef-message {
   display: inline-block;
   vertical-align: middle;
   color: white;
-  padding: 8px 10px;
-  border-radius: 4px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: {{g.radius}};
   box-sizing: border-box;
 }
-:host .tef-ok input {
-  padding: 6px 8px;
-  border: 2px solid {{g.positive}};
+:host .tef-ok .tef-input,
+:host .tef-warning .tef-input,
+:host .tef-error .tef-input {
+  padding: 7px 8px;
+  border-width: 2px;
+  border-style: solid;
+}
+:host .tef-ok .tef-input.small,
+:host .tef-warning .tef-input.small,
+:host .tef-error .tef-input.small {
+  padding: 5px 8px;
+}
+:host .tef-ok .tef-input.large,
+:host .tef-warning .tef-input.large,
+:host .tef-error .tef-input.large {
+  padding: 6px 13px;
+}
+:host .tef-ok .tef-input:hover,
+:host .tef-warning .tef-input:hover,
+:host .tef-error .tef-input:hover,
+:host .tef-ok .tef-input:focus,
+:host .tef-warning .tef-input:focus,
+:host .tef-error .tef-input:focus,
+:host .tef-ok .tef-input:active,
+:host .tef-warning .tef-input:active,
+:host .tef-error .tef-input:active {
+  border-color: {{g.significant}};
+}
+:host .tef-ok .tef-input {
+  border-color: {{g.positive}};
 }
 :host .tef-ok .tef-message {
   background-color: {{g.positive}};
 }
-:host .tef-warning input,
-:host .tef-negative input {
-  padding: 6px 8px;
-  border: 2px solid {{g.negative}};
+:host .tef-warning .tef-input {
+  border-color: {{g.warning}};
 }
-:host .tef-warning .tef-message,
-:host .tef-negative .tef-message {
+:host .tef-warning .tef-message {
+  background-color: {{g.warning}};
+}
+:host .tef-error .tef-input {
+  border-color: {{g.negative}};
+}
+:host .tef-error .tef-message {
   background-color: {{g.negative}};
-}
-:host .tef-input.small + .tef-message {
-  font-size: 11px;
-}
-:host .tef-input.large + .tef-message {
-  font-size: 24px;
 }
 :host .tef-input.block + .tef-message {
   margin-top: 5px;
@@ -119,43 +163,60 @@
 :host .tef-group label {
   display: block;
 }
+:host .tef-row label.tef-inline,
+:host .tef-group label.tef-inline {
+  display: inline-block;
+}
 :host .tef-row > label + *,
 :host .tef-group > label + *,
 :host .tef-row > .tef-message,
 :host .tef-group > .tef-message {
   margin-left: 0;
 }
-:host .tef-group > *,
-:host .tef-group ::content > * {
+:host .tef-group > * {
   border-radius: 0 !important;
 }
 :host .tef-group > *:first-child,
-:host .tef-group ::content > *:first-child,
-:host .tef-group > *:first-child > button,
-:host .tef-group ::content > *:first-child > button,
-:host .tef-group > *:first-child::shadow .tef-button,
-:host .tef-group ::content > *:first-child::shadow .tef-button {
-  border-radius: 4px 0 0 4px !important;
+:host .tef-group > *:first-child > button {
+  border-radius: {{g.radius}} 0 0 {{g.radius}} !important;
 }
 :host .tef-group > *:last-child,
+:host .tef-group > *:last-child > button {
+  border-radius: 0 {{g.radius}} {{g.radius}} 0 !important;
+}
+:host .tef-group > *:first-child:last-child {
+  border-radius: {{g.radius}} !important;
+}
+:host .tef-group > * ~ * {
+  margin: 0 0 0 -5px !important;
+}
+:host .tef-group ::content > * {
+  border-radius: 0 !important;
+}
+:host .tef-group ::content > *:first-child,
+:host .tef-group ::content > *:first-child > button,
+:host .tef-group ::content > *:first-child::shadow .tef-button {
+  border-radius: {{g.radius}} 0 0 {{g.radius}} !important;
+}
 :host .tef-group ::content > *:last-child,
-:host .tef-group > *:last-child > button,
 :host .tef-group ::content > *:last-child > button,
-:host .tef-group > *:last-child::shadow .tef-button,
 :host .tef-group ::content > *:last-child::shadow .tef-button {
-  border-radius: 0 4px 4px 0 !important;
+  border-radius: 0 {{g.radius}} {{g.radius}} 0 !important;
 }
-:host .tef-group > *:first-child:last-child,
 :host .tef-group ::content > *:first-child:last-child {
-  border-radius: 4px !important;
+  border-radius: {{g.radius}} !important;
 }
-:host .tef-group > * ~ *,
 :host .tef-group ::content > * ~ * {
   margin: 0 0 0 -5px !important;
 }
-:host .tef-group .tef-button + .tef-button,
+:host .tef-group .tef-button + .tef-button {
+  border-left-color: white;
+}
 :host .tef-group ::content tef-button + tef-button::shadow .tef-button {
   border-left-color: white;
+}
+:host textarea.tef-input {
+  resize: none;
 }
 :host [disabled],
 :host .disabled {

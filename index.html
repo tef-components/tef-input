@@ -26,8 +26,8 @@
       header[data-columns] { padding-top: 30px; }
       h1 { margin-top: 0; }
       header > div { padding-top: 2px; }
-      code {
-        display: block;
+      code > style {
+        display: block !important;
         overflow: hidden;
       }
       style {
@@ -61,16 +61,14 @@
         </div>
       </header>
 
-      <tef-core brand="telefonica"></tef-core>
-
       <h2>Input type text</h2>
         <div>
             <tef-input placeholder="Enter user name"></tef-input>
         </div>
         <code>
-        <style>
-        <tef-input placeholder="input"></tef-input>
-        </style>
+            <style>
+            <tef-input placeholder="Enter user name"></tef-input>
+            </style>
         </code>
         <h2>Label + input</h2>
         <p>Default behaviour is inline.</p>
@@ -79,100 +77,87 @@
         </div>
         <code>
         <style>
-        <tef-input label= "Label" value="input"></tef-input>
+            <tef-input label= "Label" value="input"></tef-input>
         </style>
         </code>
         <h2>Form container</h2>
-        <p>Use attribute tefrow to diplay separate blocks of information.</p>
-        <p>Use attribute multiline to transform an input into a textarea.</p>
+        <p>Use attribute <i>multiline</i> to transform an input into a textarea.</p>
+        <p>Use attribute <i>tefrow</i> to diplay separate blocks of information.</p>
         <div>
-            <tef-input label= "Label" value="input" tefrow></tef-input>
-            <tef-input multiline label= "Label" value="multiline" tefrow></tef-input>
+            <tef-input label="Label" value="input" tefrow></tef-input>
+            <tef-input multiline label="Label" value="multiline" tefrow></tef-input>
         </div>
         <code>
-        <style>
-        <tef-input label= "Label" value="input" tefrow></tef-input>
-        <tef-input multiline label= "Label" value="input" tefrow></tef-input>
-        </style>
+            <style>
+            <tef-input label="Label" value="input" tefrow></tef-input>
+            <tef-input multiline label="Label" value="multiline" tefrow></tef-input>
+            </style>
         </code>
         <h2>Sizes</h2>
         <div>
-        <tef-input value="Small input" small tefrow></tef-input>
-        <tef-input value="Small textarea" small multiline tefrow></tef-input>
-        <tef-input value="Large input" large tefrow></tef-input>
-        <tef-input value="Large textarea" large multiline tefrow></tef-input>
+            <tef-input value="Small input" tefrow small></tef-input>
+            <tef-input value="Small textarea" tefrow small multiline></tef-input>
+            <tef-input value="Large input" tefrow large></tef-input>
+            <tef-input value="Large textarea" tefrow large multiline></tef-input>
         </div>
         <code>
-        <style>
-        <tef-input value="Small input" small tefrow></tef-input>
-        <tef-input value="Small textarea" small multiline tefrow></tef-input>
-        <tef-input value="Large input" large tefrow></tef-input>
-        <tef-input value="Large textarea" large multiline tefrow></tef-input>
-        </style>
+            <style>
+            <tef-input value="Small input" tefrow small></tef-input>
+            <tef-input value="Small textarea" tefrow small multiline></tef-input>
+            <tef-input value="Large input" tefrow large></tef-input>
+            <tef-input value="Large textarea" tefrow large multiline></tef-input>
+            </style>
         </code>
         <h2>Icons</h2>
+        
         <div>
-            <tef-input value="Small search" icon small tefrow>
-                <i data-icon="search"></i>
-            </tef-input>
-            <tef-input value="Search" icon tefrow>
-                <i data-icon="search"></i>
-            </tef-input>
-            <tef-input value="Large search" icon large tefrow>
-                <i data-icon="search"></i>
-            </tef-input>
+            <tef-input value="Small search" tefrow small image="search"></tef-input>
+            <tef-input value="Default search" tefrow image="search"></tef-input>
+            <tef-input value="Large search" tefrow large image="search" ></tef-input>
         </div>
+        
         <code>
-        <style>
-        <tef-input value="Small search" icon small tefrow>
-            <i data-icon="search"></i>
-        </tef-input>
-        <tef-input value="Search" icon tefrow>
-            <i data-icon="search"></i>
-        </tef-input>
-        <tef-input value="Large search" icon large tefrow>
-            <i data-icon="search"></i>
-        </tef-input>
-        </style>
+            <style>
+            <tef-input value="Small search" tefrow small image="search"></tef-input>
+            <tef-input value="Default search" tefrow image="search"></tef-input>
+            <tef-input value="Large search" tefrow large image="search" ></tef-input>
+            </style>
         </code>
+        
         <h2>Block</h2>
         <p>Fits the available space.</p>
         <div>
-        <tef-input value="Block input" block tefrow></tef-input>
-        <tef-input value="Block search" icon block tefrow>
-            <i data-icon="search"></i>
-        </tef-input>
+            <tef-input value="Block input" tefrow block></tef-input>
+            <tef-input value="Block search" tefrow image="search" block></tef-input>
         </div>
         <code>
-        <style>
-        <tef-input value="Block input" block tefrow></tef-input>
-        <tef-input value="Block search" icon block tefrow>
-            <i data-icon="search"></i>
-        </tef-input>
-        </style>
+            <style>
+            <tef-input value="Block input" tefrow block></tef-input>
+            <tef-input value="Block search" tefrow image="search" block></tef-input>
+            </style>
         </code>
         <h2>Validations</h2>
             <div>
-                <tef-input value="Input" tefrow validation="ok">This field is valid</tef-input>
+                <tef-input value="Input" validation="ok">This field is valid</tef-input>
             </div>
         <code>
-        <style>
-        <tef-input value="text" tefrow validation="ok">This field is valid</tef-input>
-        </style>
+            <style>
+            <tef-input value="Input" validation="ok">This field is valid</tef-input>
+            </style>
             <div>
-        <tef-input value="text" tefrow validation="warning">This field has a warning</tef-input>
-        </div>
+                <tef-input value="text" validation="warning">This field has a warning</tef-input>
+            </div>
         <code>
-        <style>
-        <tef-input value="text" tefrow validation="warning">This field has a warning</tef-input>
-        </style>
-        <div>
-        <tef-input value="text" tefrow validation="negative">This field is invalid</tef-input>
-        </div>
+            <style>
+            <tef-input value="text" validation="warning">This field has a warning</tef-input>
+            </style>
+            <div>
+                <tef-input value="text" validation="error">This field is invalid</tef-input>
+            </div>
         <code>
-        <style>
-        <tef-input value="text" tefrow validation="negative">This field is invalid</tef-input>
-        </style>
+            <style>
+                <tef-input value="text" validation="error">This field is invalid</tef-input>
+            </style>
         </code>
     <script>
       var theme = document.getElementById('themeSelector'),

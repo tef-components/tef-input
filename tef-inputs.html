@@ -2,28 +2,28 @@
 <link rel="import" href="bower_components/core-style/core-style.html">
 <link rel="import" href="tef_input_styles.html">
 
-<polymer-element name="tef-input" attributes="placeholder multiline icon value label tefrow small large block validation">
+<polymer-element name="tef-input" attributes="placeholder multiline image value label small large block validation">
     <template>
         <core-style ref="tef-input"></core-style>
         <template if="{{label}}">
-            <label>{{label}}</label>
+                <label>{{label}}</label>
         </template>
-        <template if="{{!multiline && !icon && !validation}}">
-                <input id="input" class="tef-input {{tefrow ? ' tef-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}}>
+        <template if="{{!multiline && !image && !validation}}">
+                <input id="input" class="tef-input {{tefrow ? 'tef-row' : ''}} {{small ? 'small' : ''}} {{large ? 'large' : ''}} {{block ? 'block' : ''}}" placeholder={{placeholder}} value={{value}}>
         </template>
         <template if="{{multiline}}">
-            <textarea id="input" class="tef-input {{tefrow ? ' tef-row' : ''}} {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}}>
+            <textarea id="input" class="tef-input {{tefrow ? 'tef-row' : ''}} {{small ? 'small' : ''}} {{large ? 'large' : ''}} {{block ? 'block' : ''}}" placeholder={{placeholder}} value={{value}}>
             </textarea>
         </template>
-        <template if="{{icon}}">
-            <div class="tef-row">
-                <input class="tef-input icon {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" type="text" placeholder={{placeholder}} value={{value}}>
-                <content select="i"></content>
+        <template if="{{image}}">
+            <div class="{{tefrow ? 'tef-row' : ''}}">
+                <input class="tef-input icon {{small ? 'small' : ''}} {{large ? 'large' : ''}} {{block ? 'block' : ''}}" placeholder={{placeholder}} value={{value}}>
+                <i icon="search"></i>
             </div>
         </template>
         <template if="{{validation}}">
-             <div class="tef-row tef-{{validation}}"> 
-                 <input class="tef-input {{small ? ' small' : ''}} {{large ? ' large' : ''}} {{block ? ' block' : ''}}" placeholder={{placeholder}} value={{value}} > 
+             <div class="{{tefrow ? 'tef-row' : ''}} tef-{{validation}}"> 
+                 <input class="tef-input {{small ? 'small' : ''}} {{large ? 'large' : ''}} {{block ? 'block' : ''}}" placeholder={{placeholder}} value={{value}} > 
                  <div class="tef-message"> 
                      <content></content>
                  </div> 
@@ -41,8 +41,8 @@
                     value: false,
                     reflect: true
                 },
-                icon: {
-                    value: false,
+                image: {
+                    value:"",
                     reflect: true
                 },
                 tefrow: {
